@@ -80,7 +80,7 @@ P {
     color: white;
 }
 
-.navbar-filtres {
+.container-dropdown {
     display: flex;
     justify-content: space-between;
 }
