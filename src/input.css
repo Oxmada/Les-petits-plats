@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+
+body {
+    background-color: #EDEDED;
+    box-sizing: border-box;
+    max-width: 1440px;
+    margin: auto;
+}
+
+h1,
+h2 {
+    font-family: "Anton", sans-serif;
+    margin: 0;
+}
+
+h3,
+P,
+button,
+input {
+    font-family: "Manrope", sans-serif;
+    margin: 0;
+}
+
+.dropdown-content.show {
+    display: block;
+}
+
+.icone-chevron.rotated {
+    transform: rotate(180deg);
+}
+
+.rounded-top {
+    border-radius: 10px 10px 0px 0px;
+}
+
+.cross-dropdown-input {
+    display: none;
+}
+
+.search-dropdown-input:not(:placeholder-shown)+.cross-dropdown-input {
+    display: block;
+}

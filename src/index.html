@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les petits plats</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@200..800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./output.css">
+
+</head>
+
+<body>
+    <header class="bg-[url('../assets/images/background-image.png')] bg-no-repeat bg-cover">
+        <div class="header-container">
+            <img alt="logo" class="inline-block w-[207px] h-[25.26px] ml-12 mt-12" src="../assets/images/Logo.png">
+            <div class="flex flex-col items-center justify-center mt-24">
+                <h1 class="text-[#FFD15B] text-center text-4xl font-normal w-[700px]">CHERCHEZ PARMI PLUS DE 1500
+                    RECETTES DU QUOTIDIEN,SIMPLES ET DÉLICIEUSES</h1>
+            </div>
+            <div class="flex items-center justify-center">
+                <div class="mt-12 mb-52 relative w-4xl flex">
+                    <input class="bg-white h-16 rounded-lg w-full pl-[35px] placeholder:text-base placeholder:font-normal
+                        font-[Manrope]" type="text" placeholder="Rechercher une recette, un ingrédient, ...">
+                    <button type="button" class="bg-[#1B1B1B] w-12 h-12 absolute top-2 right-2.5 rounded-lg">
+                        <img src="../assets/icones/search-icone.svg" alt="search icone" class="inline">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="mt-[20px] ml-[75px]">
+            <div class="dropdown-container flex justify-between w-1/2 min-w-[700px]">
+                <div class="relative inline-block">
+                    <button
+                        class="dropdown-button bg-white text-black px-[15px] text-[16px] border-0 cursor-pointer rounded-[10px] flex items-center justify-between w-[195px] h-[56px]">Ingrédient<img
+                            class="icone-chevron" src="../assets/icones/chevron_down_icone.svg" alt="icone-chevron">
+                    </button>
+                    <div class="dropdown-content p-2.5 hidden absolute bg-white min-w-[195px] z-[1] rounded-b-[10px]">
+                        <div class="search-dropdown relative">
+                            <input
+                                class="search-dropdown-input border border-[#C6C6C6] w-full rounded flex-1 pl-2.5 pr-10 h-9 caret-[#C6C6C6] outline-none"
+                                type="text" placeholder="">
+                            <button>
+                                <i class="fa-solid fa-xmark cross-dropdown-input absolute right-7.5 top-3.75 text-[6px]
+                                    text-[#7A7A7A] cursor-pointer"></i>
+                                <svg class="search-dropdown-icone absolute right-2.5 top-[11.5px]" width="13.5"
+                                    height="14" viewBox="0 0 28 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="10" cy="10.4219" r="9.5" stroke="#7A7A7A" />
+                                    <line x1="18.3536" y1="19.0683" x2="27.3536" y2="28.0683" stroke="#7A7A7A" />
+                                </svg>
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="relative inline-block">
+                    <button
+                        class="dropdown-button bg-white text-black px-[15px] text-[16px] border-0 cursor-pointer rounded-[10px] flex items-center justify-between w-[195px] h-[56px]">Ingrédient<img
+                            class="icone-chevron" src="../assets/icones/chevron_down_icone.svg" alt="icone-chevron">
+                    </button>
+                    <div class="dropdown-content p-2.5 hidden absolute bg-white min-w-[195px] z-[1] rounded-b-[10px]">
+                        <div class="search-dropdown relative">
+                            <input
+                                class="search-dropdown-input border border-[#C6C6C6] w-full rounded flex-1 pl-2.5 pr-10 h-9 caret-[#C6C6C6] outline-none"
+                                type="text" placeholder="">
+                            <button>
+                                <i class="fa-solid fa-xmark cross-dropdown-input absolute right-7.5 top-3.75 text-[6px]
+                                    text-[#7A7A7A] cursor-point"></i>
+                                <svg class="search-dropdown-icone absolute right-2.5 top-[11.5px]" width="13.5"
+                                    height="14" viewBox="0 0 28 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="10" cy="10.4219" r="9.5" stroke="#7A7A7A" />
+                                    <line x1="18.3536" y1="19.0683" x2="27.3536" y2="28.0683" stroke="#7A7A7A" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative inline-block">
+                    <button
+                        class="dropdown-button bg-white text-black px-[15px] text-[16px] border-0 cursor-pointer rounded-[10px] flex items-center justify-between w-[195px] h-[56px]">Ingrédient<img
+                            class="icone-chevron" src="../assets/icones/chevron_down_icone.svg" alt="icone-chevron">
+                    </button>
+                    <div class="dropdown-content p-2.5 hidden absolute bg-white min-w-[195px] z-[1] rounded-b-[10px]">
+                        <div class="search-dropdown relative">
+                            <input
+                                class="search-dropdown-input border border-[#C6C6C6] w-full rounded flex-1 pl-2.5 pr-10 h-9 caret-[#C6C6C6] outline-none"
+                                type="text" placeholder="">
+                            <button>
+                                <i class="fa-solid fa-xmark cross-dropdown-input absolute right-7.5 top-3.75 text-[6px]
+                                    text-[#7A7A7A] cursor-pointer"></i>
+                                <svg class="search-dropdown-icone absolute right-2.5 top-[11.5px]" width="13.5"
+                                    height="14" viewBox="0 0 28 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="10" cy="10.4219" r="9.5" stroke="#7A7A7A" />
+                                    <line x1="18.3536" y1="19.0683" x2="27.3536" y2="28.0683" stroke="#7A7A7A" />
+                                </svg>
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+
+    </footer>
+</body>
+<script type="module" src="../Javascript/main.js"></script>
+
+</html>
