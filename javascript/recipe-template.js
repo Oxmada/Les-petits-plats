@@ -46,7 +46,8 @@ export function recipeTemplate(data) {
 
         ingredients.forEach(ingredient => {
             const li = document.createElement("li");
-            li.textContent = `${ingredient.ingredient} : ${ingredient.quantity || ""} ${ingredient.unit || ""}`;
+            li.innerHTML = `${ingredient.ingredient}<br>
+            <span class="sub-info">${ingredient.quantity || ""} ${ingredient.unit || ""}</span>`;
             ulIngredients.appendChild(li);
         });
 
