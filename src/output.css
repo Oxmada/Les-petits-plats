@@ -257,6 +257,9 @@
   .h-\[56px\] {
     height: 56px;
   }
+  .max-h-\[200px\] {
+    max-height: 200px;
+  }
   .w-1\/2 {
     width: calc(1/2 * 100%);
   }
@@ -307,6 +310,9 @@
   }
   .gap-10 {
     gap: calc(var(--spacing) * 10);
+  }
+  .overflow-y-auto {
+    overflow-y: auto;
   }
   .rounded {
     border-radius: 0.25rem;
@@ -508,6 +514,13 @@ h3, P, span, li, button, input {
 .sub-info {
   color: #7A7A7A;
   font-weight: 400;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+.ingredients-list {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 @property --tw-border-style {
   syntax: "*";

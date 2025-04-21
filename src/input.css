@@ -121,3 +121,14 @@ input {
     color: #7A7A7A;
     font-weight: 400;
 }
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.ingredients-list {
+    -ms-overflow-style: none;
+    /* IE et Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
