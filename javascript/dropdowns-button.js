@@ -9,8 +9,10 @@ export function initDropdowns() {
             const dropdownContent = this.nextElementSibling;
             dropdownContent.classList.toggle('show');
             chevronIcon.classList.toggle('rotated');
-            button.classList.toggle('rounded-top'); // Ajoute ou supprime la classe rounded-top
-            event.stopPropagation(); // Empêche la propagation de l'événement
+            button.classList.toggle('rounded-top'); 
+
+            // Empêche la propagation de l'événement
+            event.stopPropagation(); 
         });
 
         // Ajouter un gestionnaire d'événements pour l'icône chevron
@@ -18,12 +20,12 @@ export function initDropdowns() {
             const dropdownContent = button.nextElementSibling;
             dropdownContent.classList.toggle('show');
             chevronIcon.classList.toggle('rotated');
-            button.classList.toggle('rounded-top'); // Ajoute ou supprime la classe rounded-top
-            event.stopPropagation(); // Empêche la propagation de l'événement
+            button.classList.toggle('rounded-top'); 
+            event.stopPropagation();
         });
     });
 
-    // Fermer le menu déroulant si l'utilisateur clique en dehors
+    // Ferme le menu déroulant si l'utilisateur clique en dehors
     window.addEventListener("click", function(event) {
         dropdownButtons.forEach(button => {
             const dropdownContent = button.nextElementSibling;
@@ -31,7 +33,7 @@ export function initDropdowns() {
             if (!dropdownContent.contains(event.target) && !button.contains(event.target)) {
                 dropdownContent.classList.remove('show');
                 chevronIcon.classList.remove('rotated');
-                button.classList.remove('rounded-top'); // Supprime la classe rounded-top
+                button.classList.remove('rounded-top'); 
             }
         });
     });
