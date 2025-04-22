@@ -82,7 +82,7 @@ export function recipeTemplate(data) {
                 uniqueIngredients.add(name);
                 const p = document.createElement("p");
                 p.textContent = item.ingredient;
-                p.classList.add("cursor-pointer");
+                p.className ="cursor-pointer text-[14px] leading-[1.8]";
                 ingredientsList.appendChild(p);
             }
         });
@@ -93,7 +93,7 @@ export function recipeTemplate(data) {
             uniqueAppliances.add(applianceName);
             const p = document.createElement("p");
             p.textContent = `${appliance}`;
-            p.classList.add("cursor-pointer");
+            p.className ="cursor-pointer text-[14px] leading-[1.8]";
             applianceList.appendChild(p);
         }
 
@@ -104,7 +104,7 @@ export function recipeTemplate(data) {
                 uniqueUstensils.add(name);
                 const p = document.createElement("p");
                 p.textContent = u;
-                p.classList.add("cursor-pointer");
+                p.className ="cursor-pointer text-[14px] leading-[1.8]";
                 ustensilsList.appendChild(p);
             }
         });
