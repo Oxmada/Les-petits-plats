@@ -3,6 +3,9 @@ export function initSearchInput(inputId, searchButton, recipes, displayRecipes) 
 
     const handleSearch = () => {
         const searchTerm = mainInput.value.toLowerCase().trim();
+        
+        if (searchTerm.length < 3) return; // Ne lance rien si moins de 3 caractères
+        
         const filteredRecipes = filterRecipes(searchTerm, recipes);
         displayRecipes(filteredRecipes);
     };
