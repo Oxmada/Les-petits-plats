@@ -18,33 +18,63 @@ const handleDropdownSearch = (input, list, displayRecipes, allRecipes, createFil
 
 
 export const initAllDropdownSearch = () => {
-    const dropdowns = document.querySelectorAll(".search-dropdown-input");
-    const icons = document.querySelectorAll(".search-dropdown-icone");
+  const dropdowns = document.querySelectorAll(".search-dropdown-input");
+  const icons = document.querySelectorAll(".search-dropdown-icone");
+  const crosses = document.querySelectorAll(".cross-dropdown-input");
   
-    dropdowns.forEach((input, index) => {
-      const list = input.closest(".dropdown-content").querySelector(".ingredients-list, .appliance-list, .ustensils-list");
+  dropdowns.forEach((input, index) => {
+    const list = input.closest(".dropdown-content").querySelector(".ingredients-list, .appliance-list, .ustensils-list");
+    const icon = icons[index];
+    const cross = crosses[index];
+
+    const updateCrossVisibility = () => {
+      if (input.value.trim()) {
+        cross.style.display = "block";
+      } else {
+        cross.style.display = "none";
+      }
+    };
   
-      input.addEventListener("input", () => {
-        if (!list) return;
-        const keyword = input.value.toLowerCase().trim();
+    input.addEventListener("input", () => {
+      if (!list) return;
+      const keyword = input.value.toLowerCase().trim();
   
-        list.querySelectorAll("p").forEach(item => {
-          const text = item.textContent.toLowerCase();
-          item.style.display = text.includes(keyword) ? "block" : "none";
-        });
+      list.querySelectorAll("p").forEach(item => {
+        const text = item.textContent.toLowerCase();
+        const match = text.includes(keyword);
+        item.style.display = match ? "flex" : "none";
       });
+
+      updateCrossVisibility();
+    });
   
-      input.addEventListener("keydown", (e) => {
-        if (e.key === "Enter") {
-          handleDropdownSearch(input, list, displayRecipes, recipes, createFilterTag, applyFilter, activeFilters);
-        }
-      });
-  
-      const icon = icons[index];
-      if (icon) {
-        icon.addEventListener("click", () => {
-          handleDropdownSearch(input, list, displayRecipes, recipes, createFilterTag, applyFilter, activeFilters);
-        });
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        handleDropdownSearch(input, list, displayRecipes, recipes, createFilterTag, applyFilter, activeFilters);
+        updateCrossVisibility();
       }
     });
-  };
+
+    if (icon) {
+      icon.addEventListener("click", () => {
+        handleDropdownSearch(input, list, displayRecipes, recipes, createFilterTag, applyFilter, activeFilters);
+      });
+    }
+    
+    if (cross) {
+      cross.addEventListener("click", () => {
+        input.value = "";
+        updateCrossVisibility();
+
+        if (list) {
+          list.querySelectorAll("p").forEach(item => {
+            item.style.display = "flex"; // tout réafficher
+          });
+        }
+      });
+    }
+
+    // Cache initialement la croix
+    updateCrossVisibility();
+  });
+};

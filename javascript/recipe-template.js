@@ -1,7 +1,7 @@
- // Utiliser des ensembles pour stocker les valeurs uniques
- const uniqueIngredients = new Set();
- const uniqueAppliances = new Set();
- const uniqueUstensils = new Set();
+// Utiliser des ensembles pour stocker les valeurs uniques
+const uniqueIngredients = new Set();
+const uniqueAppliances = new Set();
+const uniqueUstensils = new Set();
 
 
 export function recipeTemplate(data) {

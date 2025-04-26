@@ -40,13 +40,7 @@ input {
     border-radius: 10px 10px 0px 0px;
 }
 
-.cross-dropdown-input {
-    display: none;
-}
 
-.search-dropdown-input:not(:placeholder-shown)+.cross-dropdown-input {
-    display: block;
-}
 
 .recipe-img {
     width: 100%;
