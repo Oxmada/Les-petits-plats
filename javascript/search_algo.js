@@ -1,5 +1,6 @@
-export function initSearchInput(inputId, searchButton, recipes, displayRecipes) {
+export const initSearchInput = (inputId, searchButton, recipes, displayRecipes) => {
     const mainInput = document.getElementById(inputId);
+    const crossIcon = document.querySelector(".cross-search-input");
 
     const handleSearch = () => {
         const searchTerm = mainInput.value.toLowerCase().trim();
@@ -10,6 +11,20 @@ export function initSearchInput(inputId, searchButton, recipes, displayRecipes) 
         displayRecipes(filteredRecipes);
     };
 
+    const updateCrossVisibility = () => {
+        if (mainInput.value.trim()) {
+            crossIcon.style.display = "block";
+        } else {
+            crossIcon.style.display = "none";
+        }
+    };
+
+    const resetSearch = () => {
+        mainInput.value = "";
+        displayRecipes(recipes);
+        updateCrossVisibility();
+    };
+
     searchButton.addEventListener("click", handleSearch);
 
     mainInput.addEventListener("keydown", (event) => {
@@ -17,9 +32,15 @@ export function initSearchInput(inputId, searchButton, recipes, displayRecipes) 
             handleSearch();
         }
     });
-}
 
-function filterRecipes(searchTerm, recipes) {
+    mainInput.addEventListener("input", updateCrossVisibility);
+    crossIcon.addEventListener("click", resetSearch);
+
+    // Cache initialement la croix
+    updateCrossVisibility();
+};
+
+const filterRecipes = (searchTerm, recipes) => {
     return recipes.filter(recipe => {
         const name = recipe.name.toLowerCase();
         const description = recipe.description.toLowerCase();
