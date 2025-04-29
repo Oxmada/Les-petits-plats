@@ -3,10 +3,9 @@ import {initClearInput} from "./cross-clear-input.js";
 import {recipeTemplate} from "./recipe-template.js";
 import {recipes} from "../recipes.js";
 import {displayRecipes} from "./display.js";
-import {initSearchInput} from "./search_algo.js";
 import {initFilter} from "./filter_algo.js";
 import {initAllDropdownSearch} from "./algo_filter_search.js";
-
+import {initSearchInput, filteredRecipesBySearch} from "./search_algo.js";
 
 initDropdowns();
 initClearInput();
@@ -14,8 +13,8 @@ initClearInput();
 displayRecipes(recipes);
 displayFiltersInfo(recipes);
 
-
 const searchButton = document.querySelector(".search-button");
+const mainInput = document.getElementById("main-search");
 initSearchInput("main-search", searchButton, recipes, displayRecipes);
 
 function displayFiltersInfo(recipes) {
@@ -32,10 +31,16 @@ function displayFiltersInfo(recipes) {
         template.getFiltersInfoDom();
     });
 
-    initFilter(recipes, displayRecipes);
+    // 🛠 ici : adapte la liste envoyée
+    const recipesToFilter = filteredRecipesBySearch.length > 0 ? filteredRecipesBySearch : recipes;
+    initFilter(recipesToFilter, displayRecipes);
 }
 
-initAllDropdownSearch();
+// Initialise les filtres avec le terme de recherche principal
+mainInput.addEventListener("input", () => {
+    const searchTerm = mainInput.value.toLowerCase().trim();
+    initAllDropdownSearch(searchTerm);
+});
 
 
 

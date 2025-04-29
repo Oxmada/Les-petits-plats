@@ -1,3 +1,5 @@
+import { filterRecipes, updateDropdowns, filteredRecipesBySearch } from "./search_algo.js"; // Importez filterRecipes et updateDropdowns
+
 export const activeFilters = [];
 
 export const initFilter = (allRecipes, displayRecipes) => {
@@ -24,7 +26,6 @@ export const initFilter = (allRecipes, displayRecipes) => {
                     icon.className = "fa-solid fa-circle-xmark text-[15px] ml-2 remove-icon cursor-pointer";
                     icon.addEventListener("click", e => {
                         e.stopPropagation();
-
                         const index = activeFilters.indexOf(selected);
                         if (index !== -1) activeFilters.splice(index, 1);
 
@@ -52,8 +53,19 @@ export const initFilter = (allRecipes, displayRecipes) => {
     });
 };
 
-export const applyFilter = (displayRecipes, allRecipes) => {
-    const filtered = allRecipes.filter(recipe =>
+export const applyFilter = (displayRecipes, allRecipes, searchTerm = "") => {
+    // 🔥 Si l'utilisateur a cherché, on filtre sur filteredRecipesBySearch
+    let baseRecipes = filteredRecipesBySearch.length > 0 ? filteredRecipesBySearch : allRecipes;
+
+    let filteredRecipes = baseRecipes;
+
+    // Appliquer le filtre principal si un terme de recherche est présent
+    if (searchTerm) {
+        filteredRecipes = filterRecipes(searchTerm, filteredRecipes);
+    }
+
+    // Appliquer les filtres tags
+    filteredRecipes = filteredRecipes.filter(recipe =>
         activeFilters.every(filter => {
             const inName = recipe.name.toLowerCase().includes(filter);
             const inDesc = recipe.description.toLowerCase().includes(filter);
@@ -68,7 +80,8 @@ export const applyFilter = (displayRecipes, allRecipes) => {
         })
     );
 
-    displayRecipes(filtered);
+    displayRecipes(filteredRecipes);
+    updateDropdowns(filteredRecipes); // MAJ dropdown
 };
 
 export const createFilterTag = (filterName, displayRecipes, allRecipes) => {
@@ -105,5 +118,6 @@ export const createFilterTag = (filterName, displayRecipes, allRecipes) => {
 
     filtersContainer.appendChild(tag);
 };
+
 
 
