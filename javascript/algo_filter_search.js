@@ -1,6 +1,6 @@
-import { displayRecipes } from "./display.js";
-import { recipes } from "../recipes.js";
-import { createFilterTag, applyFilter, activeFilters } from "./filter_algo.js";
+import {displayRecipes} from "./display.js";
+import {recipes} from "../recipes.js";
+import {createFilterTag, applyFilter, activeFilters} from "./filter_algo.js";
 
 const handleDropdownSearch = (input, list, displayRecipes, allRecipes, createFilterTag, applyFilter, activeFilters, searchTerm) => {
     const keyword = input.value.toLowerCase().trim();
@@ -72,7 +72,7 @@ export const initAllDropdownSearch = (searchTerm) => {
                 }
             });
         }
-
+        
         // Cache initialement la croix
         updateCrossVisibility();
     });

@@ -6,18 +6,20 @@ import {displayRecipes} from "./display.js";
 import {initFilter} from "./filter_algo.js";
 import {initAllDropdownSearch} from "./algo_filter_search.js";
 import {initSearchInput, filteredRecipesBySearch} from "./search_algo.js";
+import {updateRecipeCount} from "./recipe_counter.js";
+
 
 initDropdowns();
 initClearInput();
 
 displayRecipes(recipes);
-displayFiltersInfo(recipes);
+updateRecipeCount(recipes);
 
 const searchButton = document.querySelector(".search-button");
 const mainInput = document.getElementById("main-search");
 initSearchInput("main-search", searchButton, recipes, displayRecipes);
 
-function displayFiltersInfo(recipes) {
+const displayFiltersInfo = (recipes) => {
     const ingredientsList = document.querySelector(".ingredients-list");
     const applianceList = document.querySelector(".appliance-list");
     const ustensilsList = document.querySelector(".ustensils-list");
@@ -31,10 +33,11 @@ function displayFiltersInfo(recipes) {
         template.getFiltersInfoDom();
     });
 
-    // 🛠 ici : adapte la liste envoyée
     const recipesToFilter = filteredRecipesBySearch.length > 0 ? filteredRecipesBySearch : recipes;
     initFilter(recipesToFilter, displayRecipes);
-}
+};
+
+displayFiltersInfo(recipes);
 
 // Initialise les filtres avec le terme de recherche principal
 mainInput.addEventListener("input", () => {

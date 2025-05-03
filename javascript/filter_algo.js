@@ -1,4 +1,6 @@
-import { filterRecipes, updateDropdowns, filteredRecipesBySearch } from "./search_algo.js"; // Importez filterRecipes et updateDropdowns
+import {filterRecipes, updateDropdowns, filteredRecipesBySearch} from "./search_algo.js";
+import {updateRecipeCount} from "./recipe_counter.js";
+
 
 export const activeFilters = [];
 
@@ -54,7 +56,8 @@ export const initFilter = (allRecipes, displayRecipes) => {
 };
 
 export const applyFilter = (displayRecipes, allRecipes, searchTerm = "") => {
-    // 🔥 Si l'utilisateur a cherché, on filtre sur filteredRecipesBySearch
+
+    // 🔥 Si l'utilisateur a effectué une recherche, on filtre sur filteredRecipesBySearch
     let baseRecipes = filteredRecipesBySearch.length > 0 ? filteredRecipesBySearch : allRecipes;
 
     let filteredRecipes = baseRecipes;
@@ -81,7 +84,9 @@ export const applyFilter = (displayRecipes, allRecipes, searchTerm = "") => {
     );
 
     displayRecipes(filteredRecipes);
-    updateDropdowns(filteredRecipes); // MAJ dropdown
+    updateDropdowns(filteredRecipes);
+    updateRecipeCount(filteredRecipes);
+
 };
 
 export const createFilterTag = (filterName, displayRecipes, allRecipes) => {

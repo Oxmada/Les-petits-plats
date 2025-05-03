@@ -4,20 +4,19 @@ const uniqueAppliances = new Set();
 const uniqueUstensils = new Set();
 
 
-export function recipeTemplate(data) {
+export const recipeTemplate = (data) => {
     const {id, image, name, servings, ingredients, time, description, appliance, ustensils} = data;
-
     const picture = `../assets/json-recipes/${image}`;
 
-    function getRecipeCardDom() {
+    const getRecipeCardDom = () => {
         const article = document.createElement("article");
         article.classList.add("recipe-article");
 
         const img = document.createElement("img");
         img.setAttribute("src", picture);
-        img.setAttribute("alt",`Image de ${name}`);
+        img.setAttribute("alt", `Image de ${name}`);
         img.classList.add("recipe-img");
-        
+
         const timeTag = document.createElement("span");
         timeTag.classList.add("recipe-time");
         timeTag.textContent = `${time}min`;
@@ -28,7 +27,6 @@ export function recipeTemplate(data) {
         const content = document.createElement("div");
         content.classList.add("recipe-content");
 
-
         const title = document.createElement("h2");
         title.classList.add("recipe-name");
         title.textContent = name;
@@ -37,15 +35,13 @@ export function recipeTemplate(data) {
         subtitleRecipe.classList.add("recipe-subtitle");
         subtitleRecipe.textContent = "RECETTE";
 
-
         const pDescription = document.createElement("p");
         pDescription.classList.add("recipe-description");
         pDescription.textContent = description;
 
         const subtitleIngredients = document.createElement("h3");
         subtitleIngredients.classList.add("recipe-subtitle");
-        subtitleIngredients.textContent = "INGRÉDIENTS"
-
+        subtitleIngredients.textContent = "INGRÉDIENTS";
 
         const ulIngredients = document.createElement("ul");
         ulIngredients.classList.add("recipe-ingredients");
@@ -57,7 +53,6 @@ export function recipeTemplate(data) {
             ulIngredients.appendChild(li);
         });
 
-
         content.appendChild(title);
         content.appendChild(subtitleRecipe);
         content.appendChild(pDescription);
@@ -67,51 +62,46 @@ export function recipeTemplate(data) {
         article.appendChild(content);
 
         return article;
-    }
+    };
 
-    function getFiltersInfoDom() {
+    const getFiltersInfoDom = () => {
         const ingredientsList = document.querySelector(".ingredients-list");
         const applianceList = document.querySelector(".appliance-list");
         const ustensilsList = document.querySelector(".ustensils-list");
-      
-        
-        // Ajout des ingrédients uniques
+
         ingredients.forEach(item => {
             const name = item.ingredient.toLowerCase();
             if (!uniqueIngredients.has(name)) {
                 uniqueIngredients.add(name);
                 const p = document.createElement("p");
                 p.textContent = item.ingredient;
-                p.className ="cursor-pointer text-[14px] leading-[1.8] pl-2.5 pr-2.5 pt-1.25";
+                p.className = "cursor-pointer text-[14px] leading-[1.8] pl-2.5 pr-2.5 pt-1.25";
                 ingredientsList.appendChild(p);
             }
         });
 
-        // Ajout de l’appareil unique
         const applianceName = appliance.toLowerCase();
         if (!uniqueAppliances.has(applianceName)) {
             uniqueAppliances.add(applianceName);
             const p = document.createElement("p");
-            p.textContent = `${appliance}`;
-            p.className ="cursor-pointer text-[14px] leading-[1.8] pl-2.5 pr-2.5 pt-1.25";
+            p.textContent = appliance;
+            p.className = "cursor-pointer text-[14px] leading-[1.8] pl-2.5 pr-2.5 pt-1.25";
             applianceList.appendChild(p);
         }
 
-        // Ajout des ustensiles uniques
         ustensils.forEach(u => {
             const name = u.toLowerCase();
             if (!uniqueUstensils.has(name)) {
                 uniqueUstensils.add(name);
                 const p = document.createElement("p");
                 p.textContent = u;
-                p.className ="cursor-pointer text-[14px] leading-[1.8] pl-2.5 pr-2.5 pt-1.25";
+                p.className = "cursor-pointer text-[14px] leading-[1.8] pl-2.5 pr-2.5 pt-1.25";
                 ustensilsList.appendChild(p);
             }
         });
 
         return {ingredientsList, applianceList, ustensilsList};
-
-    }
+    };
 
     return {id, image, name, servings, ingredients, time, description, appliance, ustensils, getRecipeCardDom, getFiltersInfoDom};
-}
+};

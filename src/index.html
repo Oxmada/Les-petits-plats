@@ -47,9 +47,12 @@
         </div>
     </header>
     <main>
-        <div class="mt-[20px]">
-            <div class="dropdown-container flex justify-between w-1/2 min-w-[700px]">
-                <div class="relative inline-block">
+        <div class="mt-[20px] relative">
+            <div class="recipe-count-container absolute top-[15px] right-0">
+                <p id="recipe-count"></p>
+            </div>
+            <div class="dropdown-container relative flex justify-between w-1/2 min-w-[700px]">
+                <div class="inline-block">
                     <button
                         class="dropdown-button bg-white text-black px-[15px] text-[16px] border-0 cursor-pointer rounded-[10px] flex items-center justify-between w-[195px] h-[56px]">Ingrédients<img
                             class="icone-chevron" src="../assets/icones/chevron_down_icone.svg" alt="icone-chevron">
@@ -127,7 +130,7 @@
         <div class="container-recipes-cards grid grid-cols-3 gap-10 mt-12">
         </div>
     </main>
+    <script type="module" src="../javascript/main.js"></script>
 </body>
-<script type="module" src="../javascript/main.js"></script>
 
 </html>
