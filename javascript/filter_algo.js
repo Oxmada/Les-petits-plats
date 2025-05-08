@@ -1,4 +1,5 @@
-import {filterRecipes, updateDropdowns, filteredRecipesBySearch} from "./search_algo.js";
+import {filterRecipes, filteredRecipesBySearch} from "./search_algo.js";
+import {updateDropdowns} from "./updateDropdowns.js";
 import {updateRecipeCount} from "./recipe_counter.js";
 
 

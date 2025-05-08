@@ -75,7 +75,7 @@ export const recipeTemplate = (data) => {
                 uniqueIngredients.add(name);
                 const p = document.createElement("p");
                 p.textContent = item.ingredient;
-                p.className = "cursor-pointer text-[14px] leading-[1.8] pl-2.5 pr-2.5 pt-1.25";
+                p.className = "cursor-pointer text-[14px] leading-[1.8] pl-5 pr-5 pt-1.25";
                 ingredientsList.appendChild(p);
             }
         });
@@ -85,7 +85,7 @@ export const recipeTemplate = (data) => {
             uniqueAppliances.add(applianceName);
             const p = document.createElement("p");
             p.textContent = appliance;
-            p.className = "cursor-pointer text-[14px] leading-[1.8] pl-2.5 pr-2.5 pt-1.25";
+            p.className = "cursor-pointer text-[14px] leading-[1.8] pl-5 pr-5 pt-1.25";
             applianceList.appendChild(p);
         }
 
@@ -95,7 +95,7 @@ export const recipeTemplate = (data) => {
                 uniqueUstensils.add(name);
                 const p = document.createElement("p");
                 p.textContent = u;
-                p.className = "cursor-pointer text-[14px] leading-[1.8] pl-2.5 pr-2.5 pt-1.25";
+                p.className = "cursor-pointer text-[14px] leading-[1.8] pl-5 pr-5 pt-1.25";
                 ustensilsList.appendChild(p);
             }
         });
