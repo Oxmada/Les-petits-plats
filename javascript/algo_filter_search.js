@@ -1,6 +1,7 @@
 import {displayRecipes} from "./display.js";
 import {recipes} from "../recipes.js";
-import {createFilterTag, applyFilter, activeFilters} from "./filter_algo.js";
+import {applyFilter, activeFilters} from "./filter_algo.js";
+import {createFilterTag} from "./createFilterTag.js"
 
 const handleDropdownSearch = (input, list, displayRecipes, allRecipes, createFilterTag, applyFilter, activeFilters, searchTerm) => {
     const keyword = input.value.toLowerCase().trim();

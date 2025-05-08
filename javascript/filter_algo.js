@@ -1,6 +1,7 @@
 import {filterRecipes, filteredRecipesBySearch} from "./search_algo.js";
 import {updateDropdowns} from "./updateDropdowns.js";
 import {updateRecipeCount} from "./recipe_counter.js";
+import {createFilterTag} from "./createFilterTag.js"
 
 
 export const activeFilters = [];
@@ -90,40 +91,40 @@ export const applyFilter = (displayRecipes, allRecipes, searchTerm = "") => {
 
 };
 
-export const createFilterTag = (filterName, displayRecipes, allRecipes) => {
-    const filtersContainer = document.querySelector(".active-filters");
+// export const createFilterTag = (filterName, displayRecipes, allRecipes) => {
+//     const filtersContainer = document.querySelector(".active-filters");
 
-    const tag = document.createElement("div");
-    tag.className = "filter-tag bg-[#FFD15B] text-[14px] px-4 py-4 rounded-[10px] flex items-center gap-2";
+//     const tag = document.createElement("div");
+//     tag.className = "filter-tag bg-[#FFD15B] text-[14px] px-4 py-4 rounded-[10px] flex items-center gap-2";
 
-    tag.innerHTML = `
-    <span>${filterName}</span>
-    <button class="remove-tag cursor-pointer">
-        <i class="fa-solid fa-xmark text-[12px]"></i>
-    </button>`;
+//     tag.innerHTML = `
+//     <span>${filterName}</span>
+//     <button class="remove-tag cursor-pointer">
+//         <i class="fa-solid fa-xmark text-[12px]"></i>
+//     </button>`;
 
-    tag.querySelector(".remove-tag").addEventListener("click", () => {
-        const index = activeFilters.indexOf(filterName.toLowerCase());
-        if (index !== -1) activeFilters.splice(index, 1);
+//     tag.querySelector(".remove-tag").addEventListener("click", () => {
+//         const index = activeFilters.indexOf(filterName.toLowerCase());
+//         if (index !== -1) activeFilters.splice(index, 1);
 
-        tag.remove();
+//         tag.remove();
 
-        const allItems = document.querySelectorAll(".ingredients-list p, .appliance-list p, .ustensils-list p");
-        allItems.forEach(item => {
-            if (item.textContent.toLowerCase() === filterName.toLowerCase()) {
-                item.classList.remove("bg-[#FFD15B]", "font-bold", "px-2", "py-2", "flex", "justify-between", "items-center", "filter-selected");
-                item.classList.add("pl-2.5", "pr-2.5");
+//         const allItems = document.querySelectorAll(".ingredients-list p, .appliance-list p, .ustensils-list p");
+//         allItems.forEach(item => {
+//             if (item.textContent.toLowerCase() === filterName.toLowerCase()) {
+//                 item.classList.remove("bg-[#FFD15B]", "font-bold", "px-2", "py-2", "flex", "justify-between", "items-center", "filter-selected");
+//                 item.classList.add("pl-2.5", "pr-2.5");
 
-                const icon = item.querySelector(".remove-icon");
-                if (icon) icon.remove();
-            }
-        });
+//                 const icon = item.querySelector(".remove-icon");
+//                 if (icon) icon.remove();
+//             }
+//         });
 
-        applyFilter(displayRecipes, allRecipes);
-    });
+//         applyFilter(displayRecipes, allRecipes);
+//     });
 
-    filtersContainer.appendChild(tag);
-};
+//     filtersContainer.appendChild(tag);
+// };
 
 
 
