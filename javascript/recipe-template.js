@@ -6,7 +6,7 @@ const uniqueUstensils = new Set();
 
 export const recipeTemplate = (data) => {
     const {id, image, name, servings, ingredients, time, description, appliance, ustensils} = data;
-    const picture = `../assets/json-recipes/${image}`;
+    const picture = `/assets/json-recipes/${image}`;
 
     const getRecipeCardDom = () => {
         const article = document.createElement("article");
