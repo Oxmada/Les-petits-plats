@@ -1,4 +1,6 @@
 import {updateDropdowns} from "./updateDropdowns.js";
+import {updateRecipeCount} from "./recipe_counter.js";
+import {applyFilter} from "./filter_algo.js";
 
 // Variable pour stocker la nouvelle liste
 export let filteredRecipesBySearch = [];
@@ -11,16 +13,18 @@ export const initSearchInput = (inputId, searchButton, recipes, displayRecipes) 
     const mainInput = document.getElementById(inputId);
     const crossIcon = document.querySelector(".cross-search-input");
 
-    const handleSearch = () => {
+   const handleSearch = () => {
         const searchTerm = mainInput.value.toLowerCase().trim();
-        
-        if (searchTerm.length < 3) return; // Ne lance rien si moins de 3 caractères
-        
-        const filteredRecipes = filterRecipes(searchTerm, recipes);
-        displayRecipes(filteredRecipes);
-        updateFilteredRecipes(filteredRecipes); // Stocke la nouvelle liste
+        if (searchTerm.length < 3) return;
 
-        // Mets à jour les listes déroulantes avec les recettes restantes
+        const filteredRecipes = filterRecipes(searchTerm, recipes);
+
+        // Stock la nouvelle liste (avant d’appliquer les filtres)
+        updateFilteredRecipes(filteredRecipes);
+
+        // Applique les filtres tags SUR le résultat de la recherche
+        applyFilter(displayRecipes, recipes, searchTerm); // <-- modifié ici
+
         updateDropdowns(filteredRecipes);
     };
 
@@ -34,10 +38,15 @@ export const initSearchInput = (inputId, searchButton, recipes, displayRecipes) 
 
     const resetSearch = () => {
         mainInput.value = "";
-        displayRecipes(recipes);
-        updateFilteredRecipes(recipes); // Remet la liste complète
+
+        // Vide la recherche
+        updateFilteredRecipes([]);
         updateCrossVisibility();
+
+        // Réapplique les filtres tags
+        applyFilter(displayRecipes, recipes, ""); 
     };
+
 
     searchButton.addEventListener("click", handleSearch);
 
@@ -49,16 +58,17 @@ export const initSearchInput = (inputId, searchButton, recipes, displayRecipes) 
 
     mainInput.addEventListener("input", () => {
         updateCrossVisibility();
-    
+
         const searchTerm = mainInput.value.toLowerCase().trim();
+
         if (searchTerm.length >= 3) {
-        handleSearch();
+            handleSearch();
         } else if (searchTerm.length === 0) {
-        displayRecipes(recipes);
-        updateDropdowns(recipes);
-        updateFilteredRecipes([]);
+            updateFilteredRecipes([]); // vide la recherche
+            applyFilter(displayRecipes, recipes, ""); // 🔥 passe un searchTerm vide
         }
     });
+
 
     mainInput.addEventListener("input", updateCrossVisibility);
     crossIcon.addEventListener("click", resetSearch);
