@@ -638,6 +638,18 @@ h3, P, span, li, button, input {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+.no-results {
+  background-color: #ffecec;
+  border: 1px solid #ffb3b3;
+  padding: 1rem;
+  margin-top: 1rem;
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+}
+.no-results p {
+  color: #b00020;
+  margin: 0.5rem 0;
+}
 @property --tw-border-style {
   syntax: "*";
   inherits: false;

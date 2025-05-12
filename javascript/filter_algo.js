@@ -85,6 +85,11 @@ export const applyFilter = (displayRecipes, allRecipes, searchTerm = "") => {
         })
     );
 
+    const errorMessage = document.querySelector(".no-results");
+    if (filteredRecipes.length > 0 && errorMessage) {
+        errorMessage.style.display = "none";
+    }
+
     displayRecipes(filteredRecipes);
     updateDropdowns(filteredRecipes);
     updateRecipeCount(filteredRecipes);

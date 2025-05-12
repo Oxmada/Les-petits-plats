@@ -1,5 +1,4 @@
 import {updateDropdowns} from "./updateDropdowns.js";
-import {updateRecipeCount} from "./recipe_counter.js";
 import {applyFilter} from "./filter_algo.js";
 
 // Variable pour stocker la nouvelle liste
@@ -12,8 +11,10 @@ export const updateFilteredRecipes = (newList) => {
 export const initSearchInput = (inputId, searchButton, recipes, displayRecipes) => {
     const mainInput = document.getElementById(inputId);
     const crossIcon = document.querySelector(".cross-search-input");
+    const errorMessage = document.querySelector(".no-results");
 
-   const handleSearch = () => {
+
+    const handleSearch = () => {
         const searchTerm = mainInput.value.toLowerCase().trim();
         if (searchTerm.length < 3) return;
 
@@ -26,6 +27,17 @@ export const initSearchInput = (inputId, searchButton, recipes, displayRecipes) 
         applyFilter(displayRecipes, recipes, searchTerm); // <-- modifié ici
 
         updateDropdowns(filteredRecipes);
+
+        if (filteredRecipes.length === 0) {
+            errorMessage.innerHTML = `
+                <div class="no-results">
+                    <p>Aucune recette ne contient "${searchTerm}"</p>
+                    <p>Essayez des termes comme "poisson", "tarte aux pommes", etc.</p>
+                </div>`;
+            errorMessage.style.display = "block";
+        } else {
+        errorMessage.style.display = "none";
+        }
     };
 
     const updateCrossVisibility = () => {
