@@ -5,6 +5,7 @@ import {createFilterTag} from "./createFilterTag.js"
 
 const handleDropdownSearch = (input, list, displayRecipes, allRecipes, createFilterTag, applyFilter, activeFilters, searchTerm) => {
     const keyword = input.value.toLowerCase().trim();
+    console.log(keyword)
     if (activeFilters.includes(keyword) || !keyword) return;
 
     activeFilters.push(keyword);
@@ -38,7 +39,7 @@ export const initAllDropdownSearch = (searchTerm) => {
         input.addEventListener("input", () => {
             if (!list) return;
             const keyword = input.value.toLowerCase().trim();
-
+            
             list.querySelectorAll("p").forEach(item => {
                 const text = item.textContent.toLowerCase();
                 const match = text.includes(keyword);

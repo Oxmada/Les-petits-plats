@@ -12,6 +12,7 @@ import {updateRecipeCount} from "./recipe_counter.js";
 initDropdowns();
 initClearInput();
 
+
 displayRecipes(recipes);
 updateRecipeCount(recipes);
 
@@ -38,6 +39,7 @@ const displayFiltersInfo = (recipes) => {
 };
 
 displayFiltersInfo(recipes);
+initAllDropdownSearch()
 
 // Initialise les filtres avec le terme de recherche principal
 mainInput.addEventListener("input", () => {
