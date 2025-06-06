@@ -10,7 +10,10 @@ export const updateDropdowns = (filteredRecipes) => {
             const text = item.textContent.toLowerCase();
             const match = text.includes(keyword);
   
+            // Vérifie si l’élément est présent dans au moins une recette filtrée
             const isInRecipes = filteredRecipes.some(recipe => {
+
+                // Si c’est une liste d’ingrédients : on vérifie si l'ingrédient exact est dans la recette.
                 if (list.classList.contains("ingredients-list")) {
                     return recipe.ingredients.some(ingredientObj => ingredientObj.ingredient.toLowerCase() === text);
                 } else if (list.classList.contains("appliance-list")) {
@@ -21,6 +24,7 @@ export const updateDropdowns = (filteredRecipes) => {
                 return false;
             });
   
+            // Affiche l'élément si match et présent dans isInRecipes
             item.style.display = match && isInRecipes ? "flex" : "none";
         });
     });

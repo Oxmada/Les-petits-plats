@@ -24,7 +24,7 @@ export const initSearchInput = (inputId, searchButton, recipes, displayRecipes) 
         updateFilteredRecipes(filteredRecipes);
 
         // Applique les filtres tags SUR le résultat de la recherche
-        applyFilter(displayRecipes, recipes, searchTerm); // <-- modifié ici
+        applyFilter(displayRecipes, recipes, searchTerm); 
 
         updateDropdowns(filteredRecipes);
 
@@ -77,7 +77,7 @@ export const initSearchInput = (inputId, searchButton, recipes, displayRecipes) 
             handleSearch();
         } else if (searchTerm.length === 0) {
             updateFilteredRecipes([]); // vide la recherche
-            applyFilter(displayRecipes, recipes, ""); // 🔥 passe un searchTerm vide
+            applyFilter(displayRecipes, recipes, ""); // Passe un searchTerm vide
         }
     });
 

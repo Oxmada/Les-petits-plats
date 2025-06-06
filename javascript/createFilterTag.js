@@ -6,6 +6,7 @@ export const createFilterTag = (filterName, displayRecipes, allRecipes) => {
     const tag = document.createElement("div");
     tag.className = "filter-tag bg-[#FFD15B] text-[14px] px-4 py-4 rounded-[10px] flex items-center gap-2";
 
+    // Définit le contenu HTML du tag
     tag.innerHTML = `
     <span>${filterName}</span>
     <button class="remove-tag cursor-pointer">
@@ -13,6 +14,8 @@ export const createFilterTag = (filterName, displayRecipes, allRecipes) => {
     </button>`;
 
     tag.querySelector(".remove-tag").addEventListener("click", () => {
+
+        // Supprime le filtre du tableau activeFilters si trouvé
         const index = activeFilters.indexOf(filterName.toLowerCase());
         if (index !== -1) activeFilters.splice(index, 1);
 
@@ -20,7 +23,11 @@ export const createFilterTag = (filterName, displayRecipes, allRecipes) => {
 
         const allItems = document.querySelectorAll(".ingredients-list p, .appliance-list p, .ustensils-list p");
         allItems.forEach(item => {
+
+            // Trouve l'élément <p> qui correspond au filtre supprimé
             if (item.textContent.toLowerCase() === filterName.toLowerCase()) {
+
+                // Réinitialise le style du filtre supprimé dans le dropdown 
                 item.classList.remove("bg-[#FFD15B]", "font-bold", "px-2", "py-2", "flex", "justify-between", "items-center", "filter-selected");
                 item.classList.add("pl-2.5", "pr-2.5");
 

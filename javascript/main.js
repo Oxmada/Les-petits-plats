@@ -12,14 +12,17 @@ import {updateRecipeCount} from "./recipe_counter.js";
 initDropdowns();
 initClearInput();
 
-
+// Initialise l'affichage et le compteur des recettes
 displayRecipes(recipes);
 updateRecipeCount(recipes);
 
 const searchButton = document.querySelector(".search-button");
 const mainInput = document.getElementById("main-search");
+
+
 initSearchInput("main-search", searchButton, recipes, displayRecipes);
 
+// Gère l'affichage dynamique des filtres
 const displayFiltersInfo = (recipes) => {
     const ingredientsList = document.querySelector(".ingredients-list");
     const applianceList = document.querySelector(".appliance-list");
@@ -38,14 +41,12 @@ const displayFiltersInfo = (recipes) => {
     initFilter(recipesToFilter, displayRecipes);
 };
 
+// Affiche les filtres au chargement initial
 displayFiltersInfo(recipes);
+
+// Initialise les recherches dans les dropdowns
 initAllDropdownSearch()
 
-// Initialise les filtres avec le terme de recherche principal
-mainInput.addEventListener("input", () => {
-    const searchTerm = mainInput.value.toLowerCase().trim();
-    initAllDropdownSearch(searchTerm);
-});
 
 
 
